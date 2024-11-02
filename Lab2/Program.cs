@@ -495,74 +495,55 @@ public class Program
     public double Task_2_12(double r, int type)
     {
         double answer = 0;
-
+    
         // code here;
-        if (type < 0 || type > 2)
+        if (r > 0)
         {
-            return 0;
-        }
-        if (r < 0)
-        {
-            return 0;
-        }
-        if (type == 0)
-        {
-            answer = r * r;
-        }
-        else if (type == 1)
-        {
-            answer = Math.PI * r * r;
-        }
-        else if (type == 2)
-        {
-            answer= (r * r * Math.Sqrt(3))/4;
-        }
+            switch (type)
+            {
+                case 0: answer = r * r; break;
+                case 1: answer = Math.PI * r * r; break;
+                case 2: answer = (r * r * Math.Sqrt(3)) / 4; break;
+                default:break;
+            }
         answer = Math.Round(answer,2);
-
+        }
         // end
-
-            return answer;
+    
+        return answer;
     }
     public double Task_2_13(double A, double B, int type)
     {
         double answer = 0;
-
+    
         // code here;
-        if (type <0 || type > 2)
+        if (A > 0 && B > 0)
         {
-            return 0;
+            switch (type)
+            {
+                case 0: answer = A * B; break;
+                case 1: answer = Math.Abs(Math.PI * A * A - Math.PI * B * B); break;
+                case 2:
+                    {
+                        if (B + B > A)
+                        {
+                            double h = Math.Sqrt(B * B - A * A / 4);
+                            answer = A * h / 2;
+                        }
+                        break;
+                    }
+                default: break;
+            }
+            answer = Math.Round(answer, 2);
         }
-        if (A <= 0)
-        {
-            return 0;
-        }
-        if (B <= 0)
-        {
-            return 0;
-        }
-        if (type == 0)
-        {
-            answer = A * B;
-        }
-        else if (type == 1)
-        {
-            answer = Math.Abs(Math.PI * A * A - Math.PI * B * B);
-        }
-        else if (type == 2)
-        {
-            double h = Math.Sqrt(B * B - A * A / 4);
-            answer = A * h / 2;
-        }
-        answer = Math.Round(answer,2);
-        Console.WriteLine(answer);
         // end
-
+    
         return answer;
     }
     #endregion
 
     #region Level 3
-    public double Task_3_1()
+   public double Task_3_1()
     {
         double answer = 0;
         int n = 0;
@@ -579,11 +560,8 @@ public class Program
             n++;
         }
         answer /= n;
-        Console.WriteLine(answer);
-    }
-        
         // end
-
+    
         // answer should be equal to the task_2_1 answer
         return answer;
     }
